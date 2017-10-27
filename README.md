@@ -1,1 +1,3 @@
 # chgk
+
+![chgk](/druz.png)
