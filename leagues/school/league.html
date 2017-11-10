@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="shortcut icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAACBklEQVRYR+3XS6iNURQH8N9NckMxUTLRvchASpQZJY/uvVOJgfKceEWkSIwoM4qUrlcREQkDRJQkiZIpSQwQA4/ySKFV+9y2zzk653Ru96pvj85ee621/2ut/17rfG0G0WobRFiUYGpVo8xMmZlGX2rJmZIzJWcazcB/y5kRGNqqaOvw8xOfQq/YZzZhXx0OWq1yFT05mHa8xuhW31SHv+9oz8EswZlkuBof0++p2IU9eJw5Dv2FWIt3mXwLxmJrJov9ARzFtUzehVX4C8xNzMVdzMoM5uEGuguOdmMHOvAi0z+PiZiWyWL/FBtwMJOvTyD/ANOJZ4lDK3BiIMFUovycUvxloMAMwUuMw2lsLBBuNi5gMW5lZ9uxGdPxKpMfS6Wbk8milA+wLfGmchR82ZtzZgGu18H4/lTp40z+ivrzwn/5LsHUyk7NzARZYyR8w7BEsLzvNFrKr6lpRv+KVxqE349RmaOqYK7gFI5jeHpli3AIMxpFgV+pkS7FymR/MQV7G/GSY/WBiagrB/NxKQGp3H0vRXKuCTDR1XtxtmAbnTg6ek8RTOwnpMNHiMvz9R4xQx42AeZkym6MjXwdwQ+sScIYJx3FvxAj8RxjMstI6zJMaQLMB0zC5YLtcjzB+FTK+3hb7btpZuLIZNxJU/VNE0Byk5j669LsO4yd1fyVH3G1svwbAWB3JCKLL60AAAAASUVORK5CYII=">
+    <script src="../../js/jquery.tmpl.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAACBklEQVRYR+3XS6iNURQH8N9NckMxUTLRvchASpQZJY/uvVOJgfKceEWkSIwoM4qUrlcREQkDRJQkiZIpSQwQA4/ySKFV+9y2zzk653Ru96pvj85ee621/2ut/17rfG0G0WobRFiUYGpVo8xMmZlGX2rJmZIzJWcazcB/y5kRGNqqaOvw8xOfQq/YZzZhXx0OWq1yFT05mHa8xuhW31SHv+9oz8EswZlkuBof0++p2IU9eJw5Dv2FWIt3mXwLxmJrJov9ARzFtUzehVX4C8xNzMVdzMoM5uEGuguOdmMHOvAi0z+PiZiWyWL/FBtwMJOvTyD/ANOJZ4lDK3BiIMFUovycUvxloMAMwUuMw2lsLBBuNi5gMW5lZ9uxGdPxKpMfS6Wbk8milA+wLfGmchR82ZtzZgGu18H4/lTp40z+ivrzwn/5LsHUyk7NzARZYyR8w7BEsLzvNFrKr6lpRv+KVxqE349RmaOqYK7gFI5jeHpli3AIMxpFgV+pkS7FymR/MQV7G/GSY/WBiagrB/NxKQGp3H0vRXKuCTDR1XtxtmAbnTg6ek8RTOwnpMNHiMvz9R4xQx42AeZkym6MjXwdwQ+sScIYJx3FvxAj8RxjMstI6zJMaQLMB0zC5YLtcjzB+FTK+3hb7btpZuLIZNxJU/VNE0Byk5j669LsO4yd1fyVH3G1svwbAWB3JCKLL60AAAAASUVORK5CYII=">
+
     <style>
         body {
             font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
@@ -17,6 +19,63 @@
             user-select: none;
         }
     </style>
+
+    <script src="dates.js" type="text/javascript"></script>
+    <script id="dateTmpl" type="text/x-jquery-tmpl">
+        {%if (now_year > year) || ((now_year == year) && (now_month > month)) || ((now_year == year) && (now_month == month) && (now_day > day))%}
+            <div style="display: flex; align-items: flex-start;">
+                <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
+                    <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: rgb(74, 169, 226); transition: background 200ms ease-out;">
+                        <svg width="100%" height="100%" viewBox="-3 -4 20 20" style="fill: currentcolor; display: block; color: white;">
+                            <path d="M5,11 L0,6 L1.41,4.59 L5,8.17 L12.59,0.58 L14,2 L5,11 L5,11 Z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; text-decoration: line-through; opacity: 0.375;">
+                    <div  style="white-space: pre-wrap; word-break: break-word;">${tour} тур – ${day} ${months[month - 1]} ${year} года</div>
+                </div>
+            </div>
+        {%else%}
+            <div style="display: flex; align-items: flex-start;">
+                <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
+                    <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
+                        <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
+                            <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
+                    <div  style="white-space: pre-wrap; word-break: break-word;">${tour} тур – ${day} ${months[month - 1 ]} ${year} года</div>
+                </div>
+            </div>
+        {%/if%}
+    </script>
+    <script type="text/javascript">
+        var dt = new Date();
+        var now_month = dt.getMonth()+1;
+        var now_day = dt.getDate();
+        var now_year = dt.getFullYear();
+        var months=[
+            'января',
+            'февраля',
+            'марта',
+            'апреля',
+            'мая',
+            'июня',
+            'июля',
+            'августа',
+            'сентября',
+            'октября',
+            'ноября',
+            'декабря'
+        ];
+
+        $(function() {
+            $('#dateTmpl').tmpl(dataItems).appendTo('#datesBag');
+        });
+    </script>
+
 </head>
 <body>
 <div class="container">
@@ -53,101 +112,8 @@
     </div>
     <div>
         <h2>График</h2>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: rgb(74, 169, 226); transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="-3 -4 20 20" style="fill: currentcolor; display: block; color: white;">
-                                <path d="M5,11 L0,6 L1.41,4.59 L5,8.17 L12.59,0.58 L14,2 L5,11 L5,11 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                        <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; text-decoration: line-through; opacity: 0.375;">
-                            <div  style="white-space: pre-wrap; word-break: break-word;">1 тур – 23 сентября 2017 года</div>
-                        </div>
-                </div>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: rgb(74, 169, 226); transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="-3 -4 20 20" style="fill: currentcolor; display: block; color: white;">
-                                <path d="M5,11 L0,6 L1.41,4.59 L5,8.17 L12.59,0.58 L14,2 L5,11 L5,11 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; text-decoration: line-through; opacity: 0.375;">
-                        <div  style="white-space: pre-wrap; word-break: break-word;">2 тур - 21 октября 2017 года</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
-                                <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
-
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
-                        <div  style="white-space: pre-wrap; word-break: break-word;">3 тур - 18 ноября 2017 года</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
-                                <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
-
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
-                        <div  style="white-space: pre-wrap; word-break: break-word;">4 тур - 16 декабря 2017 года</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
-                                <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
-
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
-                        <div  style="white-space: pre-wrap; word-break: break-word;">5 тур - 20 января 2018 года</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: flex-start;">
-                    <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                        <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
-                            <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
-                                <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
-
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
-                        <div  style="white-space: pre-wrap; word-break: break-word;">6 тур - 10 февраля 2018 года</div>
-                    </div>
-                </div>
-
-        <div style="display: flex; align-items: flex-start;">
-            <div style="margin-right: 4px; width: 24px; flex-grow: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; min-height: calc((1.5em + 3px) + 3px);padding-right: 2px;">
-                <div style="align-items: center; user-select: none; display: flex; width: 16px; height: 16px; justify-content: center; flex-shrink: 0; background-color: transparent; transition: background 200ms ease-out;">
-                    <svg width="100%" height="100%" viewBox="0 0 16 16" style="fill: currentcolor; display: block;">
-                        <path d="M0,0.140014648 L0,16 L15.7142857,16 L15.7142857,0.140014648 L0,0.140014648 Z M1.42857143,14.5714286 L1.42857143,1.57000732 L14.2857143,1.57000732 L14.2857143,14.5714286 L1.42857143,14.5714286 Z">
-
-                        </path>
-                    </svg>
-                </div>
+            <div id="datesBag">
             </div>
-            <div style="max-width: 100%; width: 100%; padding-top: 3px; padding-bottom: 3px; text-align: left; ">
-                <div  style="white-space: pre-wrap; word-break: break-word;">7 тур - 3 марта 2018 года</div>
-            </div>
-        </div>
         <h2>Результаты</h2>
             <div  class="embed-responsive embed-responsive-4by3" style="height: 100%; width: 100%;">
                 <div style="height: 100%; width: 100%;">
